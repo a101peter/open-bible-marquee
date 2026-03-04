@@ -12,7 +12,7 @@
   body {
     background: #191919;
     overflow: hidden;
-    height: 100vh;
+    height: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,11 +99,19 @@
 
   .tagline-slide .lang-label {
     font-family: 'Noto Sans', sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: rgba(180, 160, 120, 0.6);
     margin-bottom: 6px;
+  }
+
+  .tagline-slide .lang-label .flag {
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: middle;
+    margin-right: 4px;
   }
 
   .tagline-slide .main-text {
@@ -171,64 +179,64 @@
 
 <script>
 const taglines = [
-  { lang: "English", text: "The Complete Bible — 59+ Languages — One Database", sub: "Interconnected. Multilingual. Built for deep study." },
-  { lang: "繁體中文", text: "完整聖經 — 59+ 種語言 — 一個資料庫", sub: "互相連結。多語言。為深入研經而造。" },
-  { lang: "简体中文", text: "完整圣经 — 59+ 种语言 — 一个数据库", sub: "互相连接。多语言。为深入研经而造。" },
-  { lang: "日本語", text: "完全な聖書 — 59以上の言語 — 一つのデータベース", sub: "相互接続。多言語。深い学びのために。" },
-  { lang: "한국어", text: "완전한 성경 — 59개 이상의 언어 — 하나의 데이터베이스", sub: "상호 연결. 다국어. 깊은 연구를 위해." },
-  { lang: "Español", text: "La Biblia Completa — 59+ Idiomas — Una Base de Datos", sub: "Interconectada. Multilingüe. Diseñada para el estudio profundo." },
-  { lang: "Français", text: "La Bible Complète — 59+ Langues — Une Base de Données", sub: "Interconnectée. Multilingue. Conçue pour l'étude approfondie." },
-  { lang: "Deutsch", text: "Die Komplette Bibel — 59+ Sprachen — Eine Datenbank", sub: "Vernetzt. Mehrsprachig. Für tiefes Studium gebaut." },
-  { lang: "Português", text: "A Bíblia Completa — 59+ Idiomas — Um Banco de Dados", sub: "Interconectada. Multilíngue. Feita para estudo profundo." },
-  { lang: "Italiano", text: "La Bibbia Completa — 59+ Lingue — Un Database", sub: "Interconnessa. Multilingue. Creata per lo studio approfondito." },
-  { lang: "Nederlands", text: "De Complete Bijbel — 59+ Talen — Eén Database", sub: "Onderling verbonden. Meertalig. Gebouwd voor diepgaande studie." },
-  { lang: "Русский", text: "Полная Библия — 59+ Языков — Одна База Данных", sub: "Взаимосвязанная. Многоязычная. Для глубокого изучения." },
-  { lang: "Українська", text: "Повна Біблія — 59+ Мов — Одна База Даних", sub: "Взаємопов'язана. Багатомовна. Для глибокого вивчення." },
-  { lang: "Polski", text: "Kompletna Biblia — 59+ Języków — Jedna Baza Danych", sub: "Połączona. Wielojęzyczna. Stworzona do głębokiego studium." },
-  { lang: "Čeština", text: "Kompletní Bible — 59+ Jazyků — Jedna Databáze", sub: "Propojená. Vícejazyčná. Vytvořena pro hluboké studium." },
-  { lang: "Slovenčina", text: "Kompletná Biblia — 59+ Jazykov — Jedna Databáza", sub: "Prepojená. Viacjazyčná. Vytvorená na hlboké štúdium." },
-  { lang: "Magyar", text: "A Teljes Biblia — 59+ Nyelv — Egy Adatbázis", sub: "Összekapcsolt. Többnyelvű. Mélyreható tanulmányozásra." },
-  { lang: "Română", text: "Biblia Completă — 59+ Limbi — O Bază de Date", sub: "Interconectată. Multilingvă. Creată pentru studiu aprofundat." },
-  { lang: "Hrvatski", text: "Potpuna Biblija — 59+ Jezika — Jedna Baza Podataka", sub: "Međusobno povezana. Višejezična. Za duboko proučavanje." },
-  { lang: "Shqip", text: "Bibla e Plotë — 59+ Gjuhë — Një Bazë të Dhënash", sub: "E ndërlidhur. Shumëgjuhëshe. Ndërtuar për studim të thellë." },
-  { lang: "Svenska", text: "Den Kompletta Bibeln — 59+ Språk — En Databas", sub: "Sammankopplad. Flerspråkig. Byggd för djupgående studier." },
-  { lang: "Norsk", text: "Den Komplette Bibelen — 59+ Språk — Én Database", sub: "Sammenkoblet. Flerspråklig. Bygget for dyptgående studier." },
-  { lang: "Dansk", text: "Den Komplette Bibel — 59+ Sprog — Én Database", sub: "Sammenkoblet. Flersproget. Bygget til dybdegående studier." },
-  { lang: "Suomi", text: "Täydellinen Raamattu — 59+ Kieltä — Yksi Tietokanta", sub: "Yhdistetty. Monikielinen. Rakennettu syvälliseen tutkimiseen." },
-  { lang: "Türkçe", text: "Tam Kutsal Kitap — 59+ Dil — Tek Veritabanı", sub: "Birbirine bağlı. Çok dilli. Derin çalışma için tasarlandı." },
-  { lang: "العربية", text: "الكتاب المقدس الكامل — 59+ لغة — قاعدة بيانات واحدة", sub: "مترابط. متعدد اللغات. مصمم للدراسة المعمّقة." },
-  { lang: "עברית", text: "התנ״ך המלא — 59+ שפות — מסד נתונים אחד", sub: "מחובר. רב-לשוני. נבנה ללימוד מעמיק." },
-  { lang: "हिन्दी", text: "संपूर्ण बाइबल — 59+ भाषाएँ — एक डेटाबेस", sub: "परस्पर जुड़ा। बहुभाषी। गहन अध्ययन के लिए।" },
-  { lang: "தமிழ்", text: "முழு வேதாகமம் — 59+ மொழிகள் — ஒரு தரவுத்தளம்", sub: "ஒன்றோடொன்று இணைக்கப்பட்டது. பல மொழி. ஆழமான ஆய்வுக்காக." },
-  { lang: "Tagalog", text: "Ang Kumpletong Bibliya — 59+ Wika — Isang Database", sub: "Magkakaugnay. Maraming wika. Para sa malalim na pag-aaral." },
-  { lang: "Bahasa Indonesia", text: "Alkitab Lengkap — 59+ Bahasa — Satu Database", sub: "Saling terhubung. Multibahasa. Dibangun untuk studi mendalam." },
-  { lang: "Bahasa Melayu", text: "Alkitab Lengkap — 59+ Bahasa — Satu Pangkalan Data", sub: "Saling berkaitan. Pelbagai bahasa. Dibina untuk kajian mendalam." },
-  { lang: "Tiếng Việt", text: "Kinh Thánh Đầy Đủ — 59+ Ngôn Ngữ — Một Cơ Sở Dữ Liệu", sub: "Kết nối chặt chẽ. Đa ngôn ngữ. Xây dựng cho nghiên cứu sâu." },
-  { lang: "ไทย", text: "พระคัมภีร์ฉบับสมบูรณ์ — 59+ ภาษา — ฐานข้อมูลเดียว", sub: "เชื่อมต่อกัน หลายภาษา สร้างเพื่อการศึกษาเชิงลึก" },
-  { lang: "Myanmar", text: "ပြည့်စုံသောသမ္မာကျမ်းစာ — ဘာသာ 59+ — ဒေတာဘေ့စ်တစ်ခု", sub: "အပြန်အလှန်ချိတ်ဆက်။ ဘာသာစုံ။ နက်ရှိုင်းစွာလေ့လာရန်။" },
-  { lang: "ελληνικά", text: "Η Πλήρης Βίβλος — 59+ Γλώσσες — Μία Βάση Δεδομένων", sub: "Διασυνδεδεμένη. Πολύγλωσση. Για βαθιά μελέτη." },
-  { lang: "Latina", text: "Biblia Integra — 59+ Linguae — Una Database", sub: "Interconnexa. Multilinguis. Ad studium profundum aedificata." },
-  { lang: "Esperanto", text: "La Kompleta Biblio — 59+ Lingvoj — Unu Datumbazo", sub: "Interkonektita. Plurlingva. Konstruita por profunda studo." },
-  { lang: "Swahili", text: "Biblia Kamili — Lugha 59+ — Hifadhidata Moja", sub: "Imeunganishwa. Lugha nyingi. Imejengwa kwa ajili ya utafiti wa kina." },
-  { lang: "Hausa", text: "Littafi Mai Tsarki Cikakke — Harsuna 59+ — Bayanan Guda Ɗaya", sub: "Haɗaɗɗe. Harsuna da yawa. An gina don nazari mai zurfi." },
-  { lang: "Yoruba", text: "Bíbélì Pipe — Èdè 59+ — Àkójọpọ̀ Dátà Kan", sub: "Ìsopọ̀. Èdè púpọ̀. Títọ́ fún ìkẹ́kọ̀ọ́ jíjinlẹ̀." },
-  { lang: "中文古典", text: "聖經全書 — 五十九餘種語言 — 一資料庫", sub: "互聯互通。多語。為深研而建。" },
-  { lang: "Afrikaans", text: "Die Volledige Bybel — 59+ Tale — Een Databasis", sub: "Onderling verbind. Veeltalig. Gebou vir diepgaande studie." },
-  { lang: "Kreyòl Ayisyen", text: "Bib la Konplè — 59+ Lang — Yon Sèl Baz Done", sub: "Entèkonekte. Miltileng. Fèt pou etid apwofondi." },
-  { lang: "Srpski", text: "Потпуна Библија — 59+ Језика — Једна База Података", sub: "Повезана. Вишејезична. За дубоко проучавање." },
-  { lang: "Български", text: "Пълната Библия — 59+ Езика — Една База Данни", sub: "Взаимосвързана. Многоезична. За задълбочено изучаване." },
-  { lang: "isiXhosa", text: "IBhayibhile Epheleleyo — Iilwimi 59+ — Uvimba Wedatha Omnye", sub: "Edibeneyo. Iilwimi ezininzi. Eyenzelwe ukufunda okunzulu." },
-  { lang: "Malagasy", text: "Ny Baiboly Feno — Fiteny 59+ — Tahiry Angona Iray", sub: "Mifandray. Fiteny maro. Natao ho fanadihadiana lalina." },
-  { lang: "Luganda", text: "Bayibuli Yonna — Ennimi 59+ — Dayitabeyisi Emu", sub: "Ezissenganye. Ennimi nnyingi. Eyazimbibwa okusoma okunnyolovu." },
-  { lang: "Potawatomi", text: "Mamwe Kche Mzenegon — 59+ Ode'inanmowen — Ngo Nta-gkendaswen", sub: "Gágé widjigabtowen. Nísho-nwéwen. Gchi-nta-gkendásowen." },
-  { lang: "Čhào Zhōu 潮州", text: "全本聖經 — 59外種語言 — 一個資料庫", sub: "互相連結。多語言。為深入研經而造。" },
-  { lang: "Ɔsɛn Twi", text: "Bible no Nyinaa — Kasa 59+ — Data Base Baako", sub: "Ɛbom. Kasa bebree. Wɔyɛɛ no maa adesua a ɛkɔ akyiri." },
-  { lang: "Cebuano", text: "Ang Kompletong Bibliya — 59+ ka Pinulongan — Usa ka Database", sub: "Nagkadugtong. Daghang pinulongan. Gitukod alang sa lalum nga pagtuon." },
-  { lang: "Galego", text: "A Biblia Completa — 59+ Linguas — Unha Base de Datos", sub: "Interconectada. Multilingüe. Construída para o estudo profundo." },
-  { lang: "Català", text: "La Bíblia Completa — 59+ Idiomes — Una Base de Dades", sub: "Interconnectada. Multilingüe. Construïda per a l'estudi profund." },
-  { lang: "Euskara", text: "Biblia Osoa — 59+ Hizkuntza — Datu-base Bakarra", sub: "Elkarri lotua. Eleaniztuna. Ikerketa sakonerako eraikia." },
-  { lang: "Cymraeg", text: "Y Beibl Cyflawn — 59+ Iaith — Un Gronfa Ddata", sub: "Rhyng-gysylltiedig. Amlieithog. Wedi'i adeiladu ar gyfer astudiaeth ddofn." },
-  { lang: "Gaeilge", text: "An Bíobla Iomlán — 59+ Teanga — Bunachar Sonraí Amháin", sub: "Idirnasctha. Ilteangach. Tógtha le haghaidh staidéar domhain." },
+  { flag: "🇬🇧", lang: "English", text: "The Complete Bible — 59+ Languages — One Database", sub: "Interconnected. Multilingual. Built for deep study." },
+  { flag: "🇹🇼", lang: "繁體中文", text: "完整聖經 — 59+ 種語言 — 一個資料庫", sub: "互相連結。多語言。為深入研經而造。" },
+  { flag: "🇨🇳", lang: "简体中文", text: "完整圣经 — 59+ 种语言 — 一个数据库", sub: "互相连接。多语言。为深入研经而造。" },
+  { flag: "🇯🇵", lang: "日本語", text: "完全な聖書 — 59以上の言語 — 一つのデータベース", sub: "相互接続。多言語。深い学びのために。" },
+  { flag: "🇰🇷", lang: "한국어", text: "완전한 성경 — 59개 이상의 언어 — 하나의 데이터베이스", sub: "상호 연결. 다국어. 깊은 연구를 위해." },
+  { flag: "🇪🇸", lang: "Español", text: "La Biblia Completa — 59+ Idiomas — Una Base de Datos", sub: "Interconectada. Multilingüe. Diseñada para el estudio profundo." },
+  { flag: "🇫🇷", lang: "Français", text: "La Bible Complète — 59+ Langues — Une Base de Données", sub: "Interconnectée. Multilingue. Conçue pour l'étude approfondie." },
+  { flag: "🇩🇪", lang: "Deutsch", text: "Die Komplette Bibel — 59+ Sprachen — Eine Datenbank", sub: "Vernetzt. Mehrsprachig. Für tiefes Studium gebaut." },
+  { flag: "🇧🇷", lang: "Português", text: "A Bíblia Completa — 59+ Idiomas — Um Banco de Dados", sub: "Interconectada. Multilíngue. Feita para estudo profundo." },
+  { flag: "🇮🇹", lang: "Italiano", text: "La Bibbia Completa — 59+ Lingue — Un Database", sub: "Interconnessa. Multilingue. Creata per lo studio approfondito." },
+  { flag: "🇳🇱", lang: "Nederlands", text: "De Complete Bijbel — 59+ Talen — Eén Database", sub: "Onderling verbonden. Meertalig. Gebouwd voor diepgaande studie." },
+  { flag: "🇷🇺", lang: "Русский", text: "Полная Библия — 59+ Языков — Одна База Данных", sub: "Взаимосвязанная. Многоязычная. Для глубокого изучения." },
+  { flag: "🇺🇦", lang: "Українська", text: "Повна Біблія — 59+ Мов — Одна База Даних", sub: "Взаємопов'язана. Багатомовна. Для глибокого вивчення." },
+  { flag: "🇵🇱", lang: "Polski", text: "Kompletna Biblia — 59+ Języków — Jedna Baza Danych", sub: "Połączona. Wielojęzyczna. Stworzona do głębokiego studium." },
+  { flag: "🇨🇿", lang: "Čeština", text: "Kompletní Bible — 59+ Jazyků — Jedna Databáze", sub: "Propojená. Vícejazyčná. Vytvořena pro hluboké studium." },
+  { flag: "🇸🇰", lang: "Slovenčina", text: "Kompletná Biblia — 59+ Jazykov — Jedna Databáza", sub: "Prepojená. Viacjazyčná. Vytvorená na hlboké štúdium." },
+  { flag: "🇭🇺", lang: "Magyar", text: "A Teljes Biblia — 59+ Nyelv — Egy Adatbázis", sub: "Összekapcsolt. Többnyelvű. Mélyreható tanulmányozásra." },
+  { flag: "🇷🇴", lang: "Română", text: "Biblia Completă — 59+ Limbi — O Bază de Date", sub: "Interconectată. Multilingvă. Creată pentru studiu aprofundat." },
+  { flag: "🇭🇷", lang: "Hrvatski", text: "Potpuna Biblija — 59+ Jezika — Jedna Baza Podataka", sub: "Međusobno povezana. Višejezična. Za duboko proučavanje." },
+  { flag: "🇦🇱", lang: "Shqip", text: "Bibla e Plotë — 59+ Gjuhë — Një Bazë të Dhënash", sub: "E ndërlidhur. Shumëgjuhëshe. Ndërtuar për studim të thellë." },
+  { flag: "🇸🇪", lang: "Svenska", text: "Den Kompletta Bibeln — 59+ Språk — En Databas", sub: "Sammankopplad. Flerspråkig. Byggd för djupgående studier." },
+  { flag: "🇳🇴", lang: "Norsk", text: "Den Komplette Bibelen — 59+ Språk — Én Database", sub: "Sammenkoblet. Flerspråklig. Bygget for dyptgående studier." },
+  { flag: "🇩🇰", lang: "Dansk", text: "Den Komplette Bibel — 59+ Sprog — Én Database", sub: "Sammenkoblet. Flersproget. Bygget til dybdegående studier." },
+  { flag: "🇫🇮", lang: "Suomi", text: "Täydellinen Raamattu — 59+ Kieltä — Yksi Tietokanta", sub: "Yhdistetty. Monikielinen. Rakennettu syvälliseen tutkimiseen." },
+  { flag: "🇹🇷", lang: "Türkçe", text: "Tam Kutsal Kitap — 59+ Dil — Tek Veritabanı", sub: "Birbirine bağlı. Çok dilli. Derin çalışma için tasarlandı." },
+  { flag: "🇸🇦", lang: "العربية", text: "الكتاب المقدس الكامل — 59+ لغة — قاعدة بيانات واحدة", sub: "مترابط. متعدد اللغات. مصمم للدراسة المعمّقة." },
+  { flag: "🇮🇱", lang: "עברית", text: "התנ״ך המלא — 59+ שפות — מסד נתונים אחד", sub: "מחובר. רב-לשוני. נבנה ללימוד מעמיק." },
+  { flag: "🇮🇳", lang: "हिन्दी", text: "संपूर्ण बाइबल — 59+ भाषाएँ — एक डेटाबेस", sub: "परस्पर जुड़ा। बहुभाषी। गहन अध्ययन के लिए।" },
+  { flag: "🇮🇳", lang: "தமிழ்", text: "முழு வேதாகமம் — 59+ மொழிகள் — ஒரு தரவுத்தளம்", sub: "ஒன்றோடொன்று இணைக்கப்பட்டது. பல மொழி. ஆழமான ஆய்வுக்காக." },
+  { flag: "🇵🇭", lang: "Tagalog", text: "Ang Kumpletong Bibliya — 59+ Wika — Isang Database", sub: "Magkakaugnay. Maraming wika. Para sa malalim na pag-aaral." },
+  { flag: "🇮🇩", lang: "Bahasa Indonesia", text: "Alkitab Lengkap — 59+ Bahasa — Satu Database", sub: "Saling terhubung. Multibahasa. Dibangun untuk studi mendalam." },
+  { flag: "🇲🇾", lang: "Bahasa Melayu", text: "Alkitab Lengkap — 59+ Bahasa — Satu Pangkalan Data", sub: "Saling berkaitan. Pelbagai bahasa. Dibina untuk kajian mendalam." },
+  { flag: "🇻🇳", lang: "Tiếng Việt", text: "Kinh Thánh Đầy Đủ — 59+ Ngôn Ngữ — Một Cơ Sở Dữ Liệu", sub: "Kết nối chặt chẽ. Đa ngôn ngữ. Xây dựng cho nghiên cứu sâu." },
+  { flag: "🇹🇭", lang: "ไทย", text: "พระคัมภีร์ฉบับสมบูรณ์ — 59+ ภาษา — ฐานข้อมูลเดียว", sub: "เชื่อมต่อกัน หลายภาษา สร้างเพื่อการศึกษาเชิงลึก" },
+  { flag: "🇲🇲", lang: "Myanmar", text: "ပြည့်စုံသောသမ္မာကျမ်းစာ — ဘာသာ 59+ — ဒေတာဘေ့စ်တစ်ခု", sub: "အပြန်အလှန်ချိတ်ဆက်။ ဘာသာစုံ။ နက်ရှိုင်းစွာလေ့လာရန်။" },
+  { flag: "🇬🇷", lang: "ελληνικά", text: "Η Πλήρης Βίβλος — 59+ Γλώσσες — Μία Βάση Δεδομένων", sub: "Διασυνδεδεμένη. Πολύγλωσση. Για βαθιά μελέτη." },
+  { flag: "🇻🇦", lang: "Latina", text: "Biblia Integra — 59+ Linguae — Una Database", sub: "Interconnexa. Multilinguis. Ad studium profundum aedificata." },
+  { flag: "🌍", lang: "Esperanto", text: "La Kompleta Biblio — 59+ Lingvoj — Unu Datumbazo", sub: "Interkonektita. Plurlingva. Konstruita por profunda studo." },
+  { flag: "🇰🇪", lang: "Swahili", text: "Biblia Kamili — Lugha 59+ — Hifadhidata Moja", sub: "Imeunganishwa. Lugha nyingi. Imejengwa kwa ajili ya utafiti wa kina." },
+  { flag: "🇳🇬", lang: "Hausa", text: "Littafi Mai Tsarki Cikakke — Harsuna 59+ — Bayanan Guda Ɗaya", sub: "Haɗaɗɗe. Harsuna da yawa. An gina don nazari mai zurfi." },
+  { flag: "🇳🇬", lang: "Yoruba", text: "Bíbélì Pipe — Èdè 59+ — Àkójọpọ̀ Dátà Kan", sub: "Ìsopọ̀. Èdè púpọ̀. Títọ́ fún ìkẹ́kọ̀ọ́ jíjinlẹ̀." },
+  { flag: "🇹🇼", lang: "中文古典", text: "聖經全書 — 五十九餘種語言 — 一資料庫", sub: "互聯互通。多語。為深研而建。" },
+  { flag: "🇿🇦", lang: "Afrikaans", text: "Die Volledige Bybel — 59+ Tale — Een Databasis", sub: "Onderling verbind. Veeltalig. Gebou vir diepgaande studie." },
+  { flag: "🇭🇹", lang: "Kreyòl Ayisyen", text: "Bib la Konplè — 59+ Lang — Yon Sèl Baz Done", sub: "Entèkonekte. Miltileng. Fèt pou etid apwofondi." },
+  { flag: "🇷🇸", lang: "Srpski", text: "Потпуна Библија — 59+ Језика — Једна База Података", sub: "Повезана. Вишејезична. За дубоко проучавање." },
+  { flag: "🇧🇬", lang: "Български", text: "Пълната Библия — 59+ Езика — Една База Данни", sub: "Взаимосвързана. Многоезична. За задълбочено изучаване." },
+  { flag: "🇿🇦", lang: "isiXhosa", text: "IBhayibhile Epheleleyo — Iilwimi 59+ — Uvimba Wedatha Omnye", sub: "Edibeneyo. Iilwimi ezininzi. Eyenzelwe ukufunda okunzulu." },
+  { flag: "🇲🇬", lang: "Malagasy", text: "Ny Baiboly Feno — Fiteny 59+ — Tahiry Angona Iray", sub: "Mifandray. Fiteny maro. Natao ho fanadihadiana lalina." },
+  { flag: "🇺🇬", lang: "Luganda", text: "Bayibuli Yonna — Ennimi 59+ — Dayitabeyisi Emu", sub: "Ezissenganye. Ennimi nnyingi. Eyazimbibwa okusoma okunnyolovu." },
+  { flag: "🇺🇸", lang: "Potawatomi", text: "Mamwe Kche Mzenegon — 59+ Ode'inanmowen — Ngo Nta-gkendaswen", sub: "Gágé widjigabtowen. Nísho-nwéwen. Gchi-nta-gkendásowen." },
+  { flag: "🇹🇼", lang: "Čhào Zhōu 潮州", text: "全本聖經 — 59外種語言 — 一個資料庫", sub: "互相連結。多語言。為深入研經而造。" },
+  { flag: "🇬🇭", lang: "Ɔsɛn Twi", text: "Bible no Nyinaa — Kasa 59+ — Data Base Baako", sub: "Ɛbom. Kasa bebree. Wɔyɛɛ no maa adesua a ɛkɔ akyiri." },
+  { flag: "🇵🇭", lang: "Cebuano", text: "Ang Kompletong Bibliya — 59+ ka Pinulongan — Usa ka Database", sub: "Nagkadugtong. Daghang pinulongan. Gitukod alang sa lalum nga pagtuon." },
+  { flag: "🇪🇸", lang: "Galego", text: "A Biblia Completa — 59+ Linguas — Unha Base de Datos", sub: "Interconectada. Multilingüe. Construída para o estudo profundo." },
+  { flag: "🇪🇸", lang: "Català", text: "La Bíblia Completa — 59+ Idiomes — Una Base de Dades", sub: "Interconnectada. Multilingüe. Construïda per a l'estudi profund." },
+  { flag: "🇪🇸", lang: "Euskara", text: "Biblia Osoa — 59+ Hizkuntza — Datu-base Bakarra", sub: "Elkarri lotua. Eleaniztuna. Ikerketa sakonerako eraikia." },
+  { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", lang: "Cymraeg", text: "Y Beibl Cyflawn — 59+ Iaith — Un Gronfa Ddata", sub: "Rhyng-gysylltiedig. Amlieithog. Wedi'i adeiladu ar gyfer astudiaeth ddofn." },
+  { flag: "🇮🇪", lang: "Gaeilge", text: "An Bíobla Iomlán — 59+ Teanga — Bunachar Sonraí Amháin", sub: "Idirnasctha. Ilteangach. Tógtha le haghaidh staidéar domhain." },
 ];
 
 // Stats data
@@ -262,7 +270,7 @@ taglines.forEach((t, i) => {
   const slide = document.createElement('div');
   slide.className = 'tagline-slide' + (i === 0 ? ' active' : '');
   slide.innerHTML = `
-    <div class="lang-label">${t.lang}</div>
+    <div class="lang-label"><span class="flag">${t.flag}</span> ${t.lang}</div>
     <div class="main-text">${t.text}</div>
     <div class="sub-text">${t.sub}</div>
   `;
